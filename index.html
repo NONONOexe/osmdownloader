@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSM Downloader</title>
+  <link href="style.css" rel="stylesheet">
+  <script src=https://unpkg.com/maplibre-gl/dist/maplibre-gl.js></script>
+  <link href=https://unpkg.com/maplibre-gl/dist/maplibre-gl.css rel="stylesheet">
+  <script src=https://unpkg.com/@turf/turf@6/turf.min.js></script>
+  <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1 class="title">OSM Downloader</h1>
+    <div class="how-to-use">
+      <div>Welcome OSM Downloader.</div>
+      <div>You can download OSM data by the following:</div>
+      <ol>
+        <li>Set the size of the area to download.</li>
+        <li>Click the center of the area you want to download on the map.</li>
+        <li>Click the "Download" button.</li>
+      </ol>
+    </div>
+  </header>
+  <div class="container">
+    <div class="column left area-size">
+      <div class="input-text">
+        <label for="area-width">Area width (m)</label>
+        <input type="number" id="area-width" placeholder="Area width" value="2000">
+      </div>
+      <div class="input-text">
+        <label for="area-height">Area height (m)</label>
+        <input type="number" id="area-height" placeholder="Area height" value="2000">
+      </div>
+    </div>
+    <div class="column center">
+      <div class="search">
+        <input type="search" class="input" placeholder="Search OpenStreetMap">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div id='map'></div>
+    </div>
+    <div class="column right">
+      <button class="download">Download <i class="fas fa-download"></i></button>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

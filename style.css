@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+label, input, button {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+ol {
+  margin: 0.3rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+header {
+  height: 200px;
+}
+
+#map {
+  height: calc(100vh - 300px);
+}
+
+.title {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 0 0 0.2rem 0.4rem;
+}
+
+.how-to-use {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 200;
+  margin: 0 0 0.6rem 1.0rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.column {
+  padding: 10px;
+}
+
+.left, .right {
+  flex-basis: auto;
+}
+
+.center {
+  flex-grow: 1;
+}
+
+.area-size .input-text {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.area-size label {
+  margin-bottom: 0.2rem;
+}
+.area-size input {
+  max-width: 8rem;
+  text-align: right;
+}
+
+.search {
+  display: flex;
+  margin-bottom: 0.3rem;
+}
+.search input {
+  flex-grow: 1;
+}
+
+.download {
+  font-family: 'Noto Sans JP', sans-serif;
+}
