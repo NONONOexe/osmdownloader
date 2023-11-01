@@ -92,7 +92,7 @@ function updateDownloadArea() {
 async function searchArea() {
   const query = searchbox.value;
   if (query == '') return;
-  const url = `http://nominatim.openstreetmap.org/?format=json&addressdetails=1&q=${query}&limit=1`;
+  const url = `https://nominatim.openstreetmap.org/?format=json&addressdetails=1&q=${query}&limit=1`;
   const response = await fetch(url);
   if (!response.ok) throw new Error('Could not get data using nominatim API.');
   const json = await response.json();
