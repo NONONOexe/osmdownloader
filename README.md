@@ -1,51 +1,27 @@
 # OSM Downloader
 
-The OSM Downloader is a web application for downloading OSM data🗺️
+The OSM Downloader (
+https://nononoexe.github.io/osmdownloader/) is a web application for downloading OSM data for RoboCupRescue Simulation Map🗺️
 You can download map data of a specified size centered on the clicked location.
 
-> OSM DownloaderはOSMの地図データをダウンロードするためのWebアプリケーションです。
+> OSM DownloaderはRoboCupRescue Simulationの地図のためのOSMデータをダウンロードできるWebアプリケーションです。
 > クリックした箇所を中心に指定したサイズの地図データをダウンロードすることができます。
-
-![example](example.gif)
 
 ## 🚀Usage
 
-This application is using Shiny, a library for web application development in R.
-Therefore, you must install R (≥ 4.1.0) beforehand; check the official R website (<https://www.r-project.org/>) for information on how to install R.
+![example](example.gif)
 
-> このアプリケーションはRのWebアプリケーション開発用ライブラリであるShinyを使っています。
-> そのため、事前にRをインストールしておく必要があります。Rのインストール方法については、Rの公式サイト（<https://www.r-project.org/>）を確認してください。
+You can download OSM data by the following:
 
-You can start the application by executing the following command in the terminal:
+1. Set the size of the area to download.
+2. Click the center of the area you want to download on the map.
+3. Click the "Download" button.
 
-> アプリケーションは以下のコマンドをターミナルで実行することで起動できます。
+> 次の手順でダウンロードしてください。
+> 1. ダウンロードしたい地図のサイズを設定
+> 2. ダウンロードする領域の中心をクリック
+> 3. 「ダウンロード」ボタンをクリック
 
-### Windows
-
-```bat
-rem Download the application
-git clone https://maslab.aitech.ac.jp/gitlab/ando/osmdownloader.git
-cd osmdownloader
-
-.\start.bat
-```
-
-### macOS / Linux
-
-```sh
-# Download the application
-git clone https://maslab.aitech.ac.jp/gitlab/ando/osmdownloader.git
-cd osmdownloader
-
-.\start.sh
-```
-
-The application is opened in your default browser.
-If you want to exit the application, terminate the process with Ctrl + C, etc.
-
-> アプリケーションは既定のブラウザで開きます。
-> また、Ctrl + Cなどで終了するときはプロセスを終了してください。
-
-# License
+## License
 
 This project is [MIT](LICENSE) licensed.
