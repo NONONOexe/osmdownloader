@@ -7,6 +7,8 @@ const map = new maplibregl.Map({
 const centreMarker = new maplibregl.Marker();
 const areaWidth = document.getElementById('area-width');
 const areaHeight = document.getElementById('area-height');
+const longitude = document.getElementById('longitude');
+const latitude = document.getElementById('latitude');
 const searchbox = document.querySelector('.search input');
 const searchButton = document.querySelector('.search button');
 const downloadButton = document.querySelector('.download');
@@ -38,8 +40,17 @@ map.on('load', () => {
   map.on('click', (e) => updateCenterMarker(e.lngLat));
 });
 
+// Set event listeners
 areaWidth.addEventListener('input', updateDownloadArea);
 areaHeight.addEventListener('input', updateDownloadArea);
+latitude.addEventListener('input', () => updateCenterMarker({
+  lng: longitude.value,
+  lat: latitude.value
+}));
+longitude.addEventListener('input', () => updateCenterMarker({
+  lng: longitude.value,
+  lat: latitude.value
+}));
 searchbox.onsearch = () => searchArea();
 searchButton.addEventListener('click', searchArea);
 downloadButton.addEventListener('click', downloadOsmData);
@@ -57,6 +68,10 @@ function updateCenterMarker(lngLat) {
 
   // Move the camera to the clicked point
   map.flyTo({ center: lngLat });
+
+  // Update the longitude and latitude of center point
+  longitude.value = Math.round(lngLat.lng * 10000) / 10000;
+  latitude.value = Math.round(lngLat.lat * 10000) / 10000;
 }
 
 // Draw a download area
@@ -108,11 +123,13 @@ async function downloadOsmData() {
 
   // Download osm xml data.
   const type = 'xml';
+  const opq = createOverpassQuery(bbox, type);
+  console.log(opq);
   const response = await fetch(
     'https://overpass-api.de/api/interpreter',
     {
       method: 'POST',
-      body: 'data=' + encodeURIComponent(createOverpassQuery(bbox, type))
+      body: 'data=' + encodeURIComponent(opq)
     });
   if (!response.ok) throw new Error('Could not get data using overpass API.');
   const osm = await response.text();
@@ -126,7 +143,6 @@ async function downloadOsmData() {
   a.href = url;
   a.download = createFileName();
 
-
   // Click on the link to trigger the download.
   document.body.appendChild(a);
   a.click();
@@ -138,19 +154,17 @@ async function downloadOsmData() {
 
 // Create overpass query to download osm data within bounding box
 function createOverpassQuery(bbox, type) {
-  return `
-    [bbox:${bbox[1]},${bbox[0]},${bbox[3]},${bbox[2]}]
-    [out:${type}]
-    [timeout:90];
-    (
-      way ["building"];
-      relation ["building"];
-      way ["highway"];
-      relation ["highway"];
-    );
-    (._;>;);
-    out;
-  `;
+  return `[bbox:${bbox[1]},${bbox[0]},${bbox[3]},${bbox[2]}]
+[out:${type}]
+[timeout:90];
+(
+  way ["building"];
+  relation ["building"];
+  way ["highway"];
+  relation ["highway"];
+);
+(._;>;);
+out;`;
 }
 
 // Create file name with the current date

@@ -49,15 +49,15 @@ header {
   flex-grow: 1;
 }
 
-.area-size .input-text {
+.area-setting .input-text {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
-.area-size label {
+.area-setting label {
   margin-bottom: 0.2rem;
 }
-.area-size input {
+.area-setting input {
   max-width: 8rem;
   text-align: right;
 }
