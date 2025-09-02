@@ -164,7 +164,7 @@ function createOverpassQuery(bbox, type) {
   relation ["highway"];
 );
 (._;>;);
-out;`;
+out meta;`;
 }
 
 // Create file name with the current date
