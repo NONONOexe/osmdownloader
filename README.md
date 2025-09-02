@@ -1,9 +1,9 @@
 # OSM Downloader
 
 The OSM Downloader (
-https://nononoexe.github.io/osmdownloader/) is a web application for downloading OSM data for RoboCupRescue Simulation Map🗺️
+https://nononoexe.github.io/osmdownloader/) is a web application for downloading OSM data for [RoboCupRescue Simulation](https://rescuesim.robocup.org/) Map🗺️
 You can download map data of a specified size centered on any location you click.
-Downloaded OSM data can be viewed in JOSM and converted to GML format using osm2gml for use in RoboCupRescue Simulation.
+Downloaded OSM data can be viewed in [JOSM](https://josm.openstreetmap.de/) and converted to GML format using [osm2gml](https://github.com/roborescue/rcrs-server) for use in RoboCupRescue Simulation.
 
 > OSM DownloaderはRoboCupRescue Simulationの地図のためのOSMデータをダウンロードできるWebアプリケーションです。
 > クリックした箇所を中心に指定したサイズの地図データをダウンロードすることができます。
