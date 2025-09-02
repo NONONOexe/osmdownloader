@@ -24,7 +24,7 @@ map.on('load', () => {
     type: 'fill',
     paint: {
       'fill-color': '#98bef7',
-      'fill-opacity': 0.6,
+      'fill-opacity': 0.3,
       'fill-outline-color': '#98bef7'
     }
   });
@@ -133,6 +133,42 @@ async function downloadOsmData() {
     });
   if (!response.ok) throw new Error('Could not get data using overpass API.');
   const osm = await response.text();
+
+  // Parse osm to geojson
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(osm, 'text/xml');
+  const geojson = osmtogeojson(xmlDoc);
+
+  if (map.getSource('osm-data')) {
+    map.getSource('osm-data').setData(geojson);
+  } else {
+    map.addSource('osm-data', { type: 'geojson', data: geojson });
+
+    map.addLayer({
+      id: 'osm-buildings',
+      type: 'fill',
+      source: 'osm-data',
+      paint: {
+        'fill-color': '#ff9999',
+        'fill-opacity': 0.5,
+        'fill-outline-color': '#cc3333'
+      },
+      filter: ['==', '$type', 'Polygon']
+    });
+
+    map.addLayer({
+      id: 'osm-roads',
+      type: 'line',
+      source: 'osm-data',
+      paint: {
+        'line-color': '#3399ff',
+        'line-opacity': 0.5,
+        'line-width': 3
+      },
+      filter: ['==', '$type', 'LineString']
+    });
+
+  }
 
   // Create blob data.
   const blob = new Blob([osm], { type: 'application/osm' });
