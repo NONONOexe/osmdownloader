@@ -119,7 +119,7 @@ async function downloadOsmData() {
   // Get bounding box of the download area
   const data = map.getSource('download-area')._data;
   if (data == null) return;
-  const bbox = data.bbox;
+  const bbox = data.geojson.bbox;
 
   // Download osm xml data.
   const type = 'xml';
